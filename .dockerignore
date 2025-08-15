@@ -1,0 +1,16 @@
+.gitignore
+.gitattributes
+.git
+.pre-commit-config.yaml
+requirements.txt
+LICENSE
+venv/
+.venv/
+scripts/
+target/
+**/*.iml
+.mvn/
+.idea/
+.vscode/
+Dockerfile
+README*
