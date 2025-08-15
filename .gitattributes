@@ -1,0 +1,43 @@
+# Global attributes: normalize text files and classify documentation
+* text=auto eol=lf
+
+# Platform specific scripts
+*.sh text eol=lf
+mvnw text eol=lf
+*.cmd text eol=crlf
+*.bat text eol=crlf
+
+# Source code
+*.java text diff=java
+*.py text
+*.xml text
+*.yml text
+*.yaml text
+*.properties text
+Dockerfile text
+*.md text
+
+# Binary assets
+*.png binary -text
+*.jpg binary -text
+*.jpeg binary -text
+*.gif binary -text
+*.webp binary -text
+*.ico binary -text
+*.jar binary -text
+*.war binary -text
+*.ear binary -text
+*.class binary -text
+*.zip binary -text
+*.exe binary -text
+*.dll binary -text
+*.so binary -text
+*.pdf binary -text
+
+# Documentation directories
+notes/** linguist-documentation
+Algorithm/** linguist-documentation
+
+# Generated or vendored directories (none currently)
+
+# Generated on July 7, 2025

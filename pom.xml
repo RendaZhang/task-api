@@ -13,6 +13,8 @@
   <properties>
     <java.version>21</java.version>
     <spring.boot.version>3.3.2</spring.boot.version>
+    <maven.compiler.version>3.11.0</maven.compiler.version>
+    <maven.compiler.parameters>true</maven.compiler.parameters>
   </properties>
 
   <dependencyManagement>
@@ -49,15 +51,25 @@
       <plugin>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-maven-plugin</artifactId>
+        <version>${spring.boot.version}</version> <!-- 给出版本 -->
         <configuration>
           <layers enabled="true"/> <!-- 便于后续做多层镜像 -->
         </configuration>
+        <executions>
+          <execution>
+            <goals>
+              <goal>repackage</goal>  <!-- 绑定到 package 生命周期 -->
+            </goals>
+          </execution>
+        </executions>
       </plugin>
       <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.11.0</version>
+        <version>${maven.compiler.version}</version>
         <configuration>
           <release>${java.version}</release>
+          <parameters>true</parameters> <!-- 让反射能拿到参数名 -->
         </configuration>
       </plugin>
     </plugins>
