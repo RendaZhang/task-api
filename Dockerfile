@@ -25,7 +25,7 @@ RUN apk add --no-cache shadow && \
 USER app
 
 # 复制构建产物（明确 JAR 名称）
-COPY --from=build /build/target/task-api-0.1.0.jar /app/app.jar
+COPY --from=build /build/target/app.jar /app/app.jar
 
 EXPOSE 8080
 ENV JAVA_OPTS=""
