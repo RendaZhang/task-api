@@ -30,10 +30,9 @@ COPY --from=build /build/target/task-api-0.1.0.jar /app/app.jar
 EXPOSE 8080
 ENV JAVA_OPTS=""
 
-# 安装 curl 并添加健康检查
 # HEALTHCHECK 在 Kubernetes 中可能会被探针覆盖
-RUN apk add --no-cache curl
+# 可选：健康检查（容器层面；K8s里仍以 probe 为准）
 HEALTHCHECK --interval=30s --timeout=3s --retries=3 \
-  CMD curl -s http://127.0.0.1:8080/actuator/health || exit 1
+  CMD wget -qO- http://127.0.0.1:8080/actuator/health || exit 1
 
-ENTRYPOINT ["sh","-lc","exec java $JAVA_OPTS -jar /app/app.jar"]
+ENTRYPOINT ["sh","-lc","exec /opt/java/openjdk/bin/java $JAVA_OPTS -jar /app/app.jar"]
